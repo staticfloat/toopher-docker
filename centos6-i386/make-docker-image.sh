@@ -27,6 +27,8 @@ mknod -m 666 "$target"/dev/zero c 1 5
 
 yum -c "$yum_config" --installroot="$target" --releasever=/ --setopt=tsflags=nodocs \
     --setopt=group_package_types=mandatory -y groupinstall Core
+yum -c "$yum_config" --installroot="$target" --releasever=/ --setopt=tsflags=nodocs \
+    --setopt=group_package_types=mandatory -y install yum-plugin-ovl
 yum -c "$yum_config" --installroot="$target" -y clean all
 
 cat > "$target"/etc/sysconfig/network <<EOF
